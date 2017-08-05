@@ -72,8 +72,27 @@ class RPNCalculator
     @stack
   end
 
-  def evaluate
-    
+  def evaluate(string)
+    @stack = []
+    string.split(' ').each do |value|
+      case
+      when value == "*"
+        times
+      when value == "/"
+        divide
+      when value == "+"
+        plus
+      when value == "-"
+        minus
+      else
+        @stack.push value.to_i
+      end
+    end
+    if string.include? '/'
+      @stack.join.to_f
+    else
+      @stack.join.to_i
+    end
   end
 
   def value
