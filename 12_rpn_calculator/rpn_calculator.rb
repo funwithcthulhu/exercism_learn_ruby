@@ -88,11 +88,7 @@ class RPNCalculator
         @stack.push value.to_i
       end
     end
-    if string.include? '/'
-      @stack.join.to_f
-    else
-      @stack.join.to_i
-    end
+    (string.include? '/') ? (@stack.join.to_f) : (@stack.join.to_i)
   end
 
   def value
